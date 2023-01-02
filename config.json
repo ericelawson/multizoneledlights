@@ -1,0 +1,21 @@
+{
+    "ledcount": 10,
+    "zones": [
+        {
+            "name": "Zone One",
+            "start": 0,
+            "end": 4,
+            "renderer": "rainbow"
+        },
+        {
+            "name": "Zone Two",
+            "start": 5,
+            "end": 9,
+            "color": {
+                "red": 255,
+                "green": 0,
+                "blue": 0
+            }
+        }
+    ]
+}
