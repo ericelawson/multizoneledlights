@@ -1,12 +1,12 @@
 # Multi-Zone LED Lighting system
 
-This project was created to provide AWS cloud IoT connected soluition to one or more Raspberry PI Pico W controllers, each connected to WS2812 LED strips (aka Neopixels).
+This project was created to provide AWS cloud IoT connected solution to one or more Raspberry PI Pico W controllers, each connected to WS2812 LED strips (aka Neopixels).
 
-While there are multipile projects available to drive WS2812 lights, the attempt for this is to create the ability to run one or more LED strips in series, and address portions of those lights as "zones", with each zone being uniquely controlled and rendered to.
+While there are multiple projects available to drive WS2812 lights, the attempt for this is to create the ability to run one or more LED strips in series, and address portions of those lights as "zones", with each zone being uniquely controlled and rendered to.
 
-Each zone will contain an index of the start and end LEDs for the zone, and then it can define a static color for the zone, or a custom renderer that will be used to cretae custom LED effects.
+Each zone will contain an index of the start and end LEDs for the zone, and then it can define a static color for the zone, or a custom renderer that will be used to create custom LED effects.
 
-The configuration for the LED renderer is based on a JSON config. It consists of the top lefel config object that defines the total number of LEDs in the strip, and then an array of zones, each of which index a specific LED start and end, and a color and/or renderer.
+The configuration for the LED renderer is based on a JSON config. It consists of the top level config object that defines the total number of LEDs in the strip, and then an array of zones, each of which index a specific LED start and end, and a color and/or renderer.
 
     {
         "ledcount": 10,
