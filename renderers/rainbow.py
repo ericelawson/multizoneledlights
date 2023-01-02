@@ -2,16 +2,13 @@ from neopixel import NeoPixel
 from renderers.customrenderer import custom_renderer
 
 """
-Rainbow customer renderer. This will create a rainbow chasing effect across the zone. This was inspired from the effect found here:
+Rainbow custom renderer. This will create a rainbow chasing effect across the zone. This was inspired from the effect found here:
 https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectRainbowCycle
 """
 class rainbow_renderer(custom_renderer):
     wheel_position = 0
     
     def render(self, start:int, end: int, pixels: NeoPixel):
-        # only render within the bounds of the zone
-        zone_led_count = 0
-        
         # calculate the current position of the color wheel used to calculate the current list of colors
         if self.wheel_position == 256*5:
             self.wheel_position = 0
@@ -19,10 +16,7 @@ class rainbow_renderer(custom_renderer):
             self.wheel_position = self.wheel_position + 1
             
         # calculate the total number of LEDs in the zone
-        if start == 0:
-            zone_led_count = end
-        else:
-            zone_led_count = end - start
+        zone_led_count = end - start
         
         # calculate color for each LED and write to each pixel
         for i in range(start, end + 1):
