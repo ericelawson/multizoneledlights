@@ -2,6 +2,7 @@ from models.zone import zone
 import neopixel
 import machine
 import time
+from ledwriter import ledwriter
 
 class ledrenderer:
 
@@ -11,19 +12,19 @@ class ledrenderer:
         self.pixelcount = pixelcount
         print('initializing LED strip')
         self.pixels = neopixel.NeoPixel(machine.Pin(22), self.pixelcount)
+        self.writer = ledwriter(pixelcount, self.pixels)
         self.clear_all()
 
     def clear_all(self):
         print('clearing all pixels in LED strip')
-        self.pixels.fill((0,0,0))
-        self.pixels.write()
+        self.writer.setAll((0,0,0))
+        self.writer.write()
         time.sleep_ms(self.SLEEP_INTERVAL_MS)
 
     def render(self, zones: list[zone]):
         for zone in zones:
-            #print('rendering zone ' + zone.name)
-            zone.render(self.pixels)    
+            print('rendering zone ' + zone.name)
+            zone.render(self.writer)    
         print('writing to LED strip')
-        self.pixels.write()
-        time.sleep_ms(self.SLEEP_INTERVAL_MS)
-        
+        self.writer.write()
+        time.sleep_ms(self.SLEEP_INTERVAL_MS)        

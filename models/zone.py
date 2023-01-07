@@ -1,7 +1,7 @@
 from models.color import color
-from neopixel import NeoPixel
 from renderers.rainbow import rainbow_renderer
 from renderers.customrenderer import custom_renderer
+from ledwriter import ledwriter
 
 class zone:
     renderer_impl: custom_renderer | None = None
@@ -26,7 +26,7 @@ class zone:
                 self.renderer_impl = rainbow_renderer()
                 
             
-    def render(self, pixels: NeoPixel):
+    def render(self, writer: ledwriter):
         """
         A zone should know how to render itself.
         If a zone has a static color, then render the color.
@@ -35,13 +35,13 @@ class zone:
         
         if self.renderer_impl != None:
             #handle renderer rendering here for custom effects
-            self.renderer_impl.render(self.start, self.end, pixels)
+            self.renderer_impl.render(self.start, self.end, writer)
             
         else:
             # this zone is a static color - render as such
             for i in range(self.start, self.end + 1):
-                pixels[i] = self.color.getTuple()
-                print('setting color for led [' + str(i) + '] to ' + str(pixels[i])) 
+                writer.setPixel(i, self.color.getTuple())
+                print('setting color for led [' + str(i) + '] to ' + str(self.color.getTuple())) 
 
 
 

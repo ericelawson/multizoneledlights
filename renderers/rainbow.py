@@ -1,4 +1,4 @@
-from neopixel import NeoPixel
+from ledwriter import ledwriter
 from renderers.customrenderer import custom_renderer
 
 """
@@ -8,7 +8,7 @@ https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStri
 class rainbow_renderer(custom_renderer):
     wheel_position = 0
     
-    def render(self, start:int, end: int, pixels: NeoPixel):
+    def render(self, start:int, end: int, writer: ledwriter):
         # calculate the current position of the color wheel used to calculate the current list of colors
         if self.wheel_position == 256*5:
             self.wheel_position = 0
@@ -21,8 +21,8 @@ class rainbow_renderer(custom_renderer):
         # calculate color for each LED and write to each pixel
         for i in range(start, end + 1):
             color: tuple = self.colorwheel((round((i * 256 / zone_led_count) + self.wheel_position)) & 255)
-            pixels[i] = color
-            print('rainbow: setting color for led [' + str(i) + '] to ' + str(pixels[i])) 
+            writer.setPixel(i, color)
+            print('rainbow: setting color for led [' + str(i) + '] to ' + str(color)) 
         
     """
     calculates the color of a pixel based on a calculated location from 0-255 on a colorwheel. 
