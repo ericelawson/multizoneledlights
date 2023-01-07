@@ -11,8 +11,7 @@ class ledrenderer:
     def __init__(self, pixelcount: int):
         self.pixelcount = pixelcount
         print('initializing LED strip')
-        self.pixels = neopixel.NeoPixel(machine.Pin(22), self.pixelcount)
-        self.writer = ledwriter(pixelcount, self.pixels)
+        self.writer = ledwriter(pixelcount)
         self.clear_all()
 
     def clear_all(self):

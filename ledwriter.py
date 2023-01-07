@@ -1,9 +1,11 @@
 from neopixel import NeoPixel
+import machine
 
 class ledwriter:
-    def __init__(self, ledcount: int, pixels: NeoPixel):
+    def __init__(self, ledcount: int):
         self.ledcount = ledcount
-        self.pixels = pixels
+        # initialize NeoPixel strip
+        self.pixels = NeoPixel(machine.Pin(22), ledcount)
     
     def setAll(self, color: tuple):
         self.pixels.fill(color)
