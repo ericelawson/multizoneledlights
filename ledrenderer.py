@@ -22,8 +22,6 @@ class ledrenderer:
 
     def render(self, zones: list[zone]):
         for zone in zones:
-            print('rendering zone ' + zone.name)
             zone.render(self.writer)    
-        print('writing to LED strip')
         self.writer.write()
         time.sleep_ms(self.SLEEP_INTERVAL_MS)        

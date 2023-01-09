@@ -22,7 +22,6 @@ class rainbow_renderer(custom_renderer):
         for i in range(start, end + 1):
             color: tuple = self.colorwheel((round((i * 256 / zone_led_count) + self.wheel_position)) & 255)
             writer.setPixel(i, color)
-            print('rainbow: setting color for led [' + str(i) + '] to ' + str(color)) 
         
     """
     calculates the color of a pixel based on a calculated location from 0-255 on a colorwheel. 

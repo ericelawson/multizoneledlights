@@ -41,7 +41,6 @@ class zone:
             # this zone is a static color - render as such
             for i in range(self.start, self.end + 1):
                 writer.setPixel(i, self.color.getTuple())
-                print('setting color for led [' + str(i) + '] to ' + str(self.color.getTuple())) 
 
 
 
