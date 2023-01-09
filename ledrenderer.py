@@ -6,7 +6,7 @@ from ledwriter import ledwriter
 
 class ledrenderer:
 
-    SLEEP_INTERVAL_MS = 1000
+    SLEEP_INTERVAL_MS = 20
 
     def __init__(self, pixelcount: int):
         self.pixelcount = pixelcount
