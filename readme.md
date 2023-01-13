@@ -30,7 +30,7 @@ The configuration for the LED renderer is based on a JSON config. It consists of
         ]
     }
 
-As this project progresses, I will continue to add more related to AWS configuraiton and setup, as well as a mobile app that will use AWS to communicate with each of the controllers.
+As this project progresses, I will continue to add more related to AWS configuration and setup, as well as a mobile app that will use AWS to communicate with each of the controllers.
 
 
 ## Hardware setup
